@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
+use App\Models\Suji;
+use Symfony\Component\HttpFoundation\Response;
+
 use Illuminate\Http\Request;
 
 class SujiController extends Controller
 {
-    public function list()
+    public function index(): JsonResponse
     {
-        return response()->json("sujisuji", 200);
+        $sujis = Suji::get();
+        return response()->json(
+            [
+                'code' => Response::HTTP_OK,
+                'sujis' => $sujis
+            ]
+        );
     }
     public function add()
     {

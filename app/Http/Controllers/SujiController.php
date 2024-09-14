@@ -8,6 +8,10 @@ class SujiController extends Controller
 {
     public function list()
     {
-        return response()->json("hello, world", 200);
+        return response()->json("sujisuji", 200);
+    }
+    public function add()
+    {
+        return response()->json("add", 200);
     }
 }

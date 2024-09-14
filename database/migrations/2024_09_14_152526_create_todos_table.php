@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->comment('タイトル');
             $table->comment('ToDo');
+            $table->timestamps();
         });
     }
 

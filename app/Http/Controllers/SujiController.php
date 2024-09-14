@@ -13,15 +13,11 @@ class SujiController extends Controller
     public function index(): JsonResponse
     {
         $sujis = Suji::get();
-        return response()->json(
-            [
-                'code' => Response::HTTP_OK,
-                'sujis' => $sujis
-            ]
-        );
+        return response()->json($sujis);
     }
-    public function add()
+    public function add(Request $request)
     {
-        return response()->json("add", 200);
+        Suji::create(["title" => $request->title]);
+        return response()->json($request->title, 200);
     }
 }

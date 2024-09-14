@@ -12,15 +12,11 @@ class ToDoController extends Controller
     public function index(): JsonResponse
     {
         $todos = Todo::get();
-        return response()->json(
-            [
-                'code' => Response::HTTP_OK,
-                'todos' => $todos
-            ]
-        );
+        return response()->json($todos);
     }
-    public function add()
+    public function add(Request $request)
     {
-        return response()->json("add", 200);
+        ToDo::create(["title" => $request->title]);
+        return response()->json($request->title, 200);
     }
 }
